@@ -1,0 +1,7 @@
+langchain
+langchain-community
+langchain-openai
+langgraph
+faiss-cpu
+docx2txt
+openai
