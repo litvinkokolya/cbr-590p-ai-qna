@@ -1,7 +1,9 @@
 langchain
 langchain-community
 langchain-openai
+langchain-text-splitters
 langgraph
 faiss-cpu
 docx2txt
 openai
+python-dotenv
