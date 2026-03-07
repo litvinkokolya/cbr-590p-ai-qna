@@ -3,7 +3,7 @@ import warnings
 from langchain_core.messages import HumanMessage
 from langgraph.types import Command
 
-from graph import build_graph
+from src.graph import build_graph
 
 warnings.filterwarnings("ignore", category=UserWarning, module="pydantic")
 

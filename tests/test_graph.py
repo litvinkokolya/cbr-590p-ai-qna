@@ -3,12 +3,12 @@ from unittest.mock import MagicMock, patch
 from langchain_core.messages import AIMessage, HumanMessage
 from langgraph.types import Command
 
-from graph import build_graph
-from nodes import CompletenessCheck
+from src.graph import build_graph
+from src.nodes import CompletenessCheck
 
 
-@patch("nodes.retriever")
-@patch("nodes.llm")
+@patch("src.nodes.retriever")
+@patch("src.nodes.llm")
 def test_graph_complete_question(mock_llm, mock_retriever):
     """Полный вопрос проходит граф без HITL и возвращает ответ."""
     # check_completeness возвращает is_complete=True
@@ -45,8 +45,8 @@ def test_graph_complete_question(mock_llm, mock_retriever):
     assert last_message.content == "Ставка резерва 0% для I категории."
 
 
-@patch("nodes.retriever")
-@patch("nodes.llm")
+@patch("src.nodes.retriever")
+@patch("src.nodes.llm")
 def test_graph_hitl_flow(mock_llm, mock_retriever):
     """Неполный вопрос — граф прерывается на HITL, после ответа завершается."""
     mock_structured = MagicMock()

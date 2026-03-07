@@ -1,7 +1,7 @@
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.graph import END, START, StateGraph
 
-from nodes import (
+from src.nodes import (
     ask_human,
     check_completeness,
     generate_answer,
@@ -9,7 +9,7 @@ from nodes import (
     retrieve,
     route_after_check,
 )
-from state import State
+from src.state import State
 
 
 def build_graph():

@@ -3,7 +3,7 @@ from unittest.mock import MagicMock, patch
 import pytest
 from langchain_core.messages import AIMessage, HumanMessage
 
-from nodes import (
+from src.nodes import (
     CompletenessCheck,
     ask_human,
     check_completeness,
@@ -57,7 +57,7 @@ def test_parse_request_initializes_state(initial_state):
 # --- Тесты check_completeness ---
 
 
-@patch("nodes.llm")
+@patch("src.nodes.llm")
 def test_check_completeness_incomplete(mock_llm, initial_state):
     """Неполный запрос — LLM возвращает is_complete=False."""
     mock_structured = MagicMock()
@@ -75,7 +75,7 @@ def test_check_completeness_incomplete(mock_llm, initial_state):
     assert result["clarification_question"] == "Укажите категорию качества ссуды (I-V)."
 
 
-@patch("nodes.llm")
+@patch("src.nodes.llm")
 def test_check_completeness_complete(mock_llm, complete_state):
     """Полный запрос — LLM возвращает is_complete=True."""
     mock_structured = MagicMock()
@@ -106,7 +106,7 @@ def test_route_complete(complete_state):
 # --- Тесты ask_human ---
 
 
-@patch("nodes.interrupt")
+@patch("src.nodes.interrupt")
 def test_ask_human_adds_messages(mock_interrupt, initial_state):
     """ask_human добавляет вопрос агента и ответ пользователя в messages."""
     initial_state["clarification_question"] = "Укажите категорию качества ссуды."
@@ -122,7 +122,7 @@ def test_ask_human_adds_messages(mock_interrupt, initial_state):
     assert messages[1].content == "III категория"
 
 
-@patch("nodes.interrupt")
+@patch("src.nodes.interrupt")
 def test_ask_human_uses_state_question(mock_interrupt, initial_state):
     """ask_human берёт вопрос из state, а не вызывает LLM повторно."""
     initial_state["clarification_question"] = "Тип заёмщика?"
@@ -137,7 +137,7 @@ def test_ask_human_uses_state_question(mock_interrupt, initial_state):
 # --- Тесты retrieve ---
 
 
-@patch("nodes.retriever")
+@patch("src.nodes.retriever")
 def test_retrieve_returns_context(mock_retriever, initial_state):
     """retrieve склеивает найденные чанки в строку context."""
     mock_retriever.invoke.return_value = [
@@ -151,7 +151,7 @@ def test_retrieve_returns_context(mock_retriever, initial_state):
     assert "Чанк 2 из 590-П" in result["context"]
 
 
-@patch("nodes.retriever")
+@patch("src.nodes.retriever")
 def test_retrieve_uses_last_human_message(mock_retriever):
     """retrieve берёт последнее сообщение пользователя, а не первое."""
     state = {
@@ -175,7 +175,7 @@ def test_retrieve_uses_last_human_message(mock_retriever):
 # --- Тесты generate_answer ---
 
 
-@patch("nodes.llm")
+@patch("src.nodes.llm")
 def test_generate_answer_returns_ai_message(mock_llm, complete_state):
     """generate_answer возвращает AIMessage с ответом."""
     mock_llm.invoke.return_value = AIMessage(content="Ставка резерва 21-50% согласно п. 3.11.")
