@@ -7,3 +7,4 @@ faiss-cpu
 docx2txt
 openai
 python-dotenv
+ruff

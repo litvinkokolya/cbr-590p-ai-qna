@@ -1,10 +1,10 @@
 import os
-from dotenv import load_dotenv
 
+from dotenv import load_dotenv
 from langchain_community.document_loaders import Docx2txtLoader
-from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
+from langchain_openai import OpenAIEmbeddings
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 load_dotenv()
 
@@ -59,6 +59,6 @@ if __name__ == "__main__":
     print(f"\nВопрос: {question}")
     print(f"Найдено чанков: {len(docs)}\n")
     for i, doc in enumerate(docs):
-        print(f"--- Чанк {i+1} ---")
+        print(f"--- Чанк {i + 1} ---")
         print(doc.page_content)
         print()
