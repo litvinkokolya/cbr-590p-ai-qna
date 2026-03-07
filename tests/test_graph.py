@@ -21,9 +21,7 @@ def test_graph_complete_question(mock_llm, mock_retriever):
     mock_llm.with_structured_output.return_value = mock_structured
 
     # retrieve находит чанки
-    mock_retriever.invoke.return_value = [
-        MagicMock(page_content="3.11. I категория — резерв 0%")
-    ]
+    mock_retriever.invoke.return_value = [MagicMock(page_content="3.11. I категория — резерв 0%")]
 
     # generate_answer возвращает ответ
     mock_llm.invoke.return_value = AIMessage(content="Ставка резерва 0% для I категории.")
