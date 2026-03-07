@@ -8,8 +8,8 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 load_dotenv()
 
-DOCX_PATH = "../data/590-п.docx"
-INDEX_PATH = "../data/faiss_590p_index"
+DOCX_PATH = "data/590-п.docx"
+INDEX_PATH = "data/faiss_590p_index"
 
 
 def build_index():
