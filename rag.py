@@ -41,7 +41,7 @@ def load_retriever():
         embeddings,
         allow_dangerous_deserialization=True,
     )
-    return vectorstore.as_retriever(search_kwargs={"k": 5})
+    return vectorstore.as_retriever(search_kwargs={"k": 8})
 
 
 def get_retriever():
