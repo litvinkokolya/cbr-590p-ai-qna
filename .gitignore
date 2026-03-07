@@ -3,6 +3,4 @@ venv/
 __pycache__/
 *.pyc
 .env
-faiss_590p_index/
-*.docx
 .idea/
