@@ -8,3 +8,5 @@ docx2txt
 openai
 python-dotenv
 ruff
+pytest
+pytest-mock
