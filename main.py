@@ -12,6 +12,7 @@ from src.graph import build_graph
 
 warnings.filterwarnings("ignore", category=UserWarning, module="pydantic")
 
+
 def print_agent(text: str) -> None:
     print(f"\n\033[32mАгент:\033[0m {text}\n")
 

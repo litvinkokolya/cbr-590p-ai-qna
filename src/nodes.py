@@ -13,7 +13,6 @@ from src.state import (
     State,
 )
 
-
 _RETRIEVE_WINDOW = 3  # сколько последних сообщений пользователя склеивать в запрос
 
 

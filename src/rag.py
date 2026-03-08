@@ -20,7 +20,7 @@ def _load_sections(docx_path: str) -> list[Document]:
     Каждый пункт (1.1., 2.3. и т.д.) вместе с дочерними абзацами — один Document."""
     doc = docx.Document(docx_path)
 
-    print('doc paragraphs: ', doc.paragraphs)
+    print("doc paragraphs: ", doc.paragraphs)
 
     sections: list[Document] = []
     current_header = ""
@@ -29,12 +29,12 @@ def _load_sections(docx_path: str) -> list[Document]:
     def flush() -> None:
         text = "\n".join(current_lines).strip()
         if text:
-            print('if text: ', text)
-            print('if text current header: ', current_header)
+            print("if text: ", text)
+            print("if text current header: ", current_header)
             sections.append(Document(page_content=text, metadata={"header": current_header}))
 
     for para in doc.paragraphs:
-        print('para: ', para)
+        print("para: ", para)
         text = para.text.strip()
         if not text:
             continue

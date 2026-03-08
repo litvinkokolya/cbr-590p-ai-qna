@@ -4,8 +4,7 @@ import pytest
 from langchain_core.messages import AIMessage, HumanMessage
 
 from src.nodes import AgentNodes
-from src.state import CompletenessCheck, State
-
+from src.state import CompletenessCheck
 
 # --- Фикстуры ---
 
